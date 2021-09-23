@@ -1,0 +1,30 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/index.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.download-page-edit-block {
+  background-color: #DBEDF3;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #404B69;
+}
+.download-page-edit-block .download-page-headline {
+  color: #F73859;
+  font-size: 22px;
+  margin-top: 0;
+  font-weight: bold;
+}
+.download-page-edit-block .download-page-text {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #404B69;
+}
+.download-page-edit-block .element-delete {
+  text-decoration: none;
+  color: #F73859;
+  font-size: 24px;
+}
+.download-page-edit-block .element-add {
+  background-color: #404B69;
+}
+
+/*# sourceMappingURL=index.css.map*/
