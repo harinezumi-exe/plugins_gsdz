@@ -2,6 +2,7 @@
 
 function generatePageHTML($args) {
     $elements = $args['elements'];
+    $text = $args['noLinkElements'];
     $links = $args['links'];
 
     ob_start(); ?>
@@ -17,7 +18,7 @@ function generatePageHTML($args) {
         <?php    
         foreach ($elements as $index => $value) { ?>
             <li>
-                <a rel="noreferrer noopener" href="<?php echo $links[$index]; ?>" target="_blank"><?php echo $elements[$index] ?></a>
+                <a rel="noreferrer noopener" href="<?php echo $links[$index]; ?>" target="_blank"><?php echo $elements[$index]; ?></a>
             </li>
         <?php } ?>
             

@@ -11191,11 +11191,12 @@ function EditComponent(props) {
     const newElements = props.attributes.elements.filter((x, index) => {
       return index != indexToDelete;
     });
-    props.setAttributes({
-      elements: newElements
-    });
     const newLinks = props.attributes.links.filter((x, index) => {
       return index != indexToDelete;
+    });
+    props.setAttributes({
+      elements: newElements,
+      links: newLinks
     });
   }
 
@@ -11214,7 +11215,7 @@ function EditComponent(props) {
     className: "download-page-text"
   }, "Elementy listy:"), props.attributes.elements.map((el, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-      label: "Tekst widoczny na stronie",
+      label: "Tekst widoczny na stronie pe\u0142ni\u0105cy rol\u0119 linku",
       autoFocus: el == undefined,
       value: el,
       onChange: newValue => {
@@ -11226,6 +11227,7 @@ function EditComponent(props) {
       }
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FlexBlock, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
       label: "Link do materia\u0142\xF3w",
+      value: props.attributes.links[index],
       onChange: newValue => {
         const newLinks = props.attributes.links.concat([]);
         newLinks[index] = newValue;
