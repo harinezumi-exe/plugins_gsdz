@@ -116,7 +116,7 @@ wp.blocks.registerBlockType('elrplugin/element-listy-relacje', {
       type: "string"
     }
   },
-  description: 'Dodaj element do listy na podstronie "Relacje"',
+  description: 'Dodaj element do listy na stronie "Relacje"',
   example: {
     attributes: {
       text: "Tutaj wpisz tekst",
@@ -136,14 +136,16 @@ function EditComponent(props) {
     className: "account-list-element-headline"
   }, "Generator elementu listy Relacji"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    name: "theText",
+    name: "elrText",
+    value: props.attributes.text,
     onChange: e => props.setAttributes({
       text: e.target.value
     }),
     placeholder: "Tutaj wpisz to, co ma by\u0107 wy\u015Bwietlane na stronie."
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    name: "thelink",
+    name: "elrLink",
+    value: props.attributes.link,
     onChange: e => props.setAttributes({
       link: e.target.value
     }),

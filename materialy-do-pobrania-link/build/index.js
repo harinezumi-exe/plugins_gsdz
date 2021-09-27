@@ -117,7 +117,7 @@ wp.blocks.registerBlockType('mdplplugin/do-pobrania-link', {
       type: "string"
     }
   },
-  description: 'Dodaj na podstronie "Do pobrania" link do osobnej strony z materiałami',
+  description: 'Dodaj na stronie "Do pobrania" link do osobnej podstrony z materiałami',
   example: {
     attributes: {
       text: "Tutaj wpisz tekst",
@@ -137,14 +137,16 @@ function EditComponent(props) {
     className: "download-link-headline"
   }, "Generator linku do podstrony z materia\u0142ami do pobrania"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    name: "theText",
+    name: "mdplText",
+    value: props.attributes.text,
     onChange: e => props.setAttributes({
       text: e.target.value
     }),
     placeholder: "Tutaj wpisz to, co ma by\u0107 wy\u015Bwietlane na stronie."
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    name: "thelink",
+    name: "mdplLink",
+    value: props.attributes.link,
     onChange: e => props.setAttributes({
       link: e.target.value
     }),
