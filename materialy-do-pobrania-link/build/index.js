@@ -104,7 +104,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/index.scss");
 
 
-console.log("working");
 wp.blocks.registerBlockType('mdplplugin/do-pobrania-link', {
   title: "Link do podstrony z materiałami do pobrania",
   icon: "editor-ul",
