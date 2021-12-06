@@ -59,4 +59,17 @@
   text-decoration: none;
 }
 
+.popup-button__top {
+  top: -55px;
+}
+
+.popup-never {
+  left: 0;
+  background-color: #5c7cd1;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 7px 10px;
+  bottom: -60px;
+}
+
 /*# sourceMappingURL=index.css.map*/

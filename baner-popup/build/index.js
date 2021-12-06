@@ -43,9 +43,15 @@ class Popup extends (react__WEBPACK_IMPORTED_MODULE_2___default().Component) {
     }
   }
 
-  setCookie(cname, cvalue, exdays) {
+  setCookie(cname, cvalue, exdays, immortal = false) {
     const d = new Date();
-    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+
+    if (!immortal) {
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    } else {
+      d.setTime(2147483647 * 1000);
+    }
+
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
@@ -64,6 +70,7 @@ class Popup extends (react__WEBPACK_IMPORTED_MODULE_2___default().Component) {
   componentWillUnmount() {
     document.querySelector("body").classList.remove("overflow-hidden");
     window.removeEventListener('resize', this.updateDimensions);
+    document.querySelector(".bp-update-me").remove();
   }
 
   render() {
@@ -74,7 +81,7 @@ class Popup extends (react__WEBPACK_IMPORTED_MODULE_2___default().Component) {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "popup-box"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-      className: "popup-button",
+      className: "popup-button popup-button__top",
       onClick: () => {
         this.setCookie("bpp-667", "closed", 1);
         this.setState({
@@ -85,7 +92,15 @@ class Popup extends (react__WEBPACK_IMPORTED_MODULE_2___default().Component) {
       className: "popup-img",
       src: this.state.width > 425 ? this.props.desktop : this.props.mobile,
       alt: "baner spotkania"
-    }))));
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
+      className: "popup-button popup-never",
+      onClick: () => {
+        this.setCookie("bpp-668", "closed", 1, true);
+        this.setState({
+          show: false
+        });
+      }
+    }, "Blokuj wyskakuj\u0105ce okienka"))));
   }
 
 }
@@ -256,7 +271,7 @@ class BanerPopup extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component
   constructor(props) {
     super(props);
     this.state = {
-      popupShow: this.getCookie("bpp-667") != "closed"
+      popupShow: this.getCookie("bpp-667") != "closed" && this.getCookie("bpp-668") != "closed"
     };
   }
 

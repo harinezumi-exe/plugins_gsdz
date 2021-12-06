@@ -11164,6 +11164,10 @@ wp.blocks.registerBlockType('mdppplugin/materialy-do-pobrania-podstrona', {
     links: {
       type: "array",
       default: [""]
+    },
+    post_id: {
+      type: "string",
+      default: ""
     }
   },
   description: "Generator zawartości podstrony prezentującej materiały do pobrania.",
@@ -11171,7 +11175,11 @@ wp.blocks.registerBlockType('mdppplugin/materialy-do-pobrania-podstrona', {
     attributes: {
       title: "Tytuł podstrony",
       elements: ["link 1", "link 2", "link 3"],
-      links: [1, 2, 3]
+      links: [1, 2, 3],
+      post_id: {
+        type: "string",
+        default: ""
+      }
     }
   },
   edit: EditComponent,
@@ -11181,6 +11189,10 @@ wp.blocks.registerBlockType('mdppplugin/materialy-do-pobrania-podstrona', {
 });
 
 function EditComponent(props) {
+  props.setAttributes({
+    post_id: wp.media.view.settings.post.id
+  });
+
   function updateTitle(value) {
     props.setAttributes({
       title: value
@@ -11198,6 +11210,7 @@ function EditComponent(props) {
       elements: newElements,
       links: newLinks
     });
+    console.log(props.attributes.post_id);
   }
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

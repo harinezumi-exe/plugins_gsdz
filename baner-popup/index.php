@@ -31,6 +31,41 @@ class BanerPopup {
     function banerPopupPage() { ?>
         <div class="wrap">
             <h1>Baner na stronie głównej w formie popup-u</h1>
+
+            <h2 class="bns-heading bns-heading__medium">Zalecane wymiary banerów:</h2>
+            <ul>
+                <li>Wersja dla komputerów: 1920 x 500 px</li>
+                <li>Wersja dla urządzeń mobilnych: 1920 x 1000 px</li>
+            </ul>
+            <h2 class="bns-heading bns-heading__medium">Instrukcja:</h2>
+            <h3 class="bns-heading bns-heading__small">Dodawanie</h3>
+            <ol>
+                <li>Wstaw banery (zdjęcia) do biblioteki mediów
+                    <ol class="bns-ol__indented">
+                        <li>Przejdź do zakładki "Media"</li>
+                        <li>Kliknij "Dodaj nowe"</li>
+                        <li>Wybierz obrazy i zatwierdź</li>
+                    </ol>
+                </li>
+                <li>Skopiuj odpowiednie URL
+                    <ol class="bns-ol__indented">
+                        <li>W bibliotece mediów kliknij na miniaturę obrazu - pojawi się okno z obrazem w większym rozmiarze i informacjami o nim</li>
+                        <li>Po prawej znajdź pole "Adres URL pliku"</li>
+                        <li>Kliknij przycisk "Skopiuj adres URL do schowka"</li>
+                    </ol>
+                </li>
+                <li>Wstaw do pola poniżej</li>
+                <li>Kliknij "Zapisz"</li>
+            </ol>
+            <h3 class="bns-heading bns-heading__small">Usuwanie</h3>
+            <ol>
+                <li>Usuń linki w poniższych polach</li>
+                <li>Kliknij "Zapisz"</li>
+            </ol>
+            <br>
+            <p><strong>Należy wstawić oba linki. Jeśli jedno pole będzie puste, baner nie pojawi się.</strong></p>
+            <br>
+
             <?php if($_POST['justsumbittedpopup'] == 'true') $this->handleForm(); ?>
             <form method="post">
                 <input type="hidden" name="justsumbittedpopup" value="true">
@@ -86,6 +121,8 @@ class BanerPopup {
         );
 
         ob_start();
+
+        echo $content;
         
         if (is_front_page()) {
             wp_enqueue_script( 'bpFrontend', plugin_dir_url( __FILE__ ) . 'build/index.js', array('wp-element') );
@@ -97,9 +134,6 @@ class BanerPopup {
             </div>
             <?php
         }
-
-        
-        echo $content;
 
         return ob_get_clean();
 
