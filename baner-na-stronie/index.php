@@ -30,7 +30,50 @@ class BanerNaStronie {
 
     function banerNaStroniePage() { ?>
         <div class="wrap">
-            <h1>Baner na stronie głównej</h1>
+            <h1 class="bns-heading bns-heading__large">Baner na stronie głównej</h1>
+
+            <h2 class="bns-heading bns-heading__medium">Zalecane wymiary banerów:</h2>
+            <ul>
+                <li>Wersja dla komputerów: 1920 x 500 px</li>
+                <li>Wersja dla urządzeń mobilnych: 1920 x 1000 px</li>
+            </ul>
+            <h2 class="bns-heading bns-heading__medium">Instrukcja:</h2>
+            <h3 class="bns-heading bns-heading__small">Dodawanie</h3>
+            <ol>
+                <li>Wstaw banery (zdjęcia) do biblioteki mediów
+                    <ol class="bns-ol__indented">
+                        <li>Przejdź do zakładki "Media"</li>
+                        <li>Kliknij "Dodaj nowe"</li>
+                        <li>Wybierz obrazy i zatwierdź</li>
+                    </ol>
+                </li>
+                <li>Skopiuj odpowiednie URL
+                    <ol class="bns-ol__indented">
+                        <li>W bibliotece mediów kliknij na miniaturę obrazu - pojawi się okno z obrazem w większym rozmiarze i informacjami o nim</li>
+                        <li>Po prawej znajdź pole "Adres URL pliku"</li>
+                        <li>Kliknij przycisk "Skopiuj adres URL do schowka"</li>
+                    </ol>
+                </li>
+                <li>Wstaw do pola poniżej</li>
+                <li>Kliknij "Zapisz"</li>
+                <li>Sprawdź szablon szablon strony głównej (Home), powinien to być "Twentig - No title"
+                    <ol class="bns-ol__indented">
+                        <li>Przejdź do zakładki "Strony"</li>
+                        <li>Wybierz "Home - Strona główna"</li>
+                        <li>W edytorze strony kliknij na ikonę koła zębatego w prawym górnym rogu aby wyświetlić ustawienia</li>
+                        <li>W sekcji "Atrybuty strony" sprawdź, czy jest wybrany szablon "Twentig - No title"</li>
+                    </ol>
+                </li>
+            </ol>
+            <h3 class="bns-heading bns-heading__small">Usuwanie</h3>
+            <ol>
+                <li>Usuń linki w poniższych polach</li>
+                <li>Kliknij "Zapisz"</li>
+                <li>Sprawdź szablon szablon strony głównej (Home), powinien to być "Twentig - Transparent header"</li>
+            </ol>
+            <br>
+            <p><strong>Należy wstawić oba linki. Jeśli jedno pole będzie puste, baner nie pojawi się.</strong></p>
+            <br>
             <?php if($_POST['justsumbittedbanner'] == 'true') $this->handleForm(); ?>
             <form method="post">
                 <input type="hidden" name="justsumbittedbanner" value="true">
@@ -59,6 +102,12 @@ class BanerNaStronie {
         if (wp_verify_nonce( $_POST['theNonce'], 'saveBannerOnPage' ) && current_user_can( 'manage_options' )) {
             update_option( 'plugin_baner_desktop', $_POST['plugin_baner_desktop']);
             update_option( 'plugin_baner_mobile', $_POST['plugin_baner_mobile'] );
+            $id = 155;
+            if( !$_POST['plugin_baner_desktop'] || !$_POST['plugin_baner_mobile']) {
+                update_post_meta( $id, "_wp_page_template", "tw-header-transparent.php");
+            } else {
+                update_post_meta( $id, "_wp_page_template", "tw-no-title.php");
+                }
             ?>
             <div class="updated">
                 <p>Twoje banery zostały zapisane.</p>
